@@ -12,7 +12,6 @@ class Api::V1::ShopsController < Api::V1::BaseController
 
   def new
     @shop = Shop.new
-    authorize @shop
   end
 
   def edit
@@ -24,4 +23,9 @@ class Api::V1::ShopsController < Api::V1::BaseController
   def set_shop
     @shop = Shop.find(params[:id])
   end
+
+  def shop_params
+    params.require(:shop).permit(:name, :description, :address, :avatar_url, :opening_hours, :rating_from_diaping)
+  end
 end
+
