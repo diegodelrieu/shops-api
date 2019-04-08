@@ -29,19 +29,6 @@ ActiveRecord::Schema.define(version: 2019_04_08_093111) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "goods", force: :cascade do |t|
-    t.bigint "shop_id"
-    t.string "name"
-    t.string "description"
-    t.string "original_price"
-    t.string "discount_price"
-    t.integer "quantity"
-    t.string "expiry_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_goods_on_shop_id"
-  end
-
   create_table "items", force: :cascade do |t|
     t.bigint "shop_id"
     t.string "name"
@@ -67,6 +54,5 @@ ActiveRecord::Schema.define(version: 2019_04_08_093111) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "goods", "shops"
   add_foreign_key "items", "shops"
 end
