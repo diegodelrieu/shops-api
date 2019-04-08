@@ -6,7 +6,7 @@ class Api::V1::ShopsController < Api::V1::BaseController
   skip_before_action :authenticate_customer!, only: [:index, :show]
 
   def index
-    @shops = Shop.all
+    @shops = policy_scope(Shop)
   end
 
   def show
@@ -14,6 +14,17 @@ class Api::V1::ShopsController < Api::V1::BaseController
 
   def new
     @shop = Shop.new
+  end
+
+  def create
+    @shop = Shop.new(shop_params)
+    @shop.customer = current_customer
+    authorize @shop
+    if @shop.save
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   def edit
@@ -24,10 +35,16 @@ class Api::V1::ShopsController < Api::V1::BaseController
 
   def set_shop
     @shop = Shop.find(params[:id])
+    authorize @shop
   end
 
   def shop_params
     params.require(:shop).permit(:name, :description, :address, :avatar_url, :opening_hours, :rating_from_diaping)
+  end
+
+  def render_error
+    render json: { errors: @shop.errors.full_messages },
+      status: :unprocessable_entity
   end
 end
 
