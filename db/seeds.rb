@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Shop.destroy_all!
+Shop.destroy_all
 
 
 Shop.create!(name: "#{Faker::Commerce.color} #{Faker::Food.spice.split.first}".titlecase, address: "#{Faker::Address.community}", description: "#{Faker::Company.buzzword} #{Faker::Food.ingredient}".capitalize, avatar_url: "http://askwomenonline.org/wp-content/uploads/2017/12/hummus-recipe-760x428.jpg")
