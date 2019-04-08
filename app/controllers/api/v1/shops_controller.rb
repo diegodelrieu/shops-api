@@ -1,7 +1,7 @@
 class Api::V1::ShopsController < Api::V1::BaseController
 
   respond_to :json
-  acts_as_token_authentication_handler_for Customer, except: [ :show, :index ]
+  acts_as_token_authentication_handler_for Shop, except: [ :show, :index ]
   before_action :set_shop, only: [:show]
   skip_before_action :authenticate_customer!, only: [:index, :show]
 
@@ -18,7 +18,7 @@ class Api::V1::ShopsController < Api::V1::BaseController
 
   def create
     @shop = Shop.new(shop_params)
-    @shop.customer = current_customer
+    @shop.shop = current_shop
     authorize @shop
     if @shop.save
       render :show, status: :created
