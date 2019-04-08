@@ -7,6 +7,18 @@ class Api::V1::ShopsController < Api::V1::BaseController
     @shops = Shop.all
   end
 
+  def show
+  end
+
+  def new
+    @shop = Shop.new
+    authorize @shop
+  end
+
+  def edit
+  end
+
+
   private
 
   def set_shop
