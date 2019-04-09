@@ -3,8 +3,8 @@ class Api::V1::BaseController < ActionController::API
   after_action :verify_authorized, except: [:index, :create, :new]
   after_action :verify_policy_scoped, only: :index
 
-
   before_action :authenticate_customer!
+  #before_action :authenticate_shop!
 
   rescue_from StandardError,                with: :internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
