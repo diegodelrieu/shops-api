@@ -20,9 +20,10 @@ class Api::V1::ShopsController < Api::V1::BaseController
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
-      render :show, status: :created
+      response = { message: 'Shop created successfully', auth_token: @shop.authentication_token }
+      render json: response, status: :created
     else
-      render_error
+      render json: @shop.errors, status: :bad
     end
   end
 

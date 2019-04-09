@@ -5,12 +5,14 @@ class Api::V1::CustomersController < Api::V1::BaseController
   skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new]
   skip_after_action :verify_authorized
 
+
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      render :show, status: :created
+      response = { message: 'Customer created successfully', auth_token: @customer.authentication_token }
+      render json: response, status: :created
     else
-      render_error
+      render json: @customer.errors, status: :bad
     end
   end
 
