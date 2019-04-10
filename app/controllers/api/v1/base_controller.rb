@@ -1,6 +1,6 @@
 class Api::V1::BaseController < ActionController::API
   include Pundit
-  after_action :verify_authorized, except: [:index, :create, :new]
+  after_action :verify_authorized, except: [:index, :create, :new, :show]
   after_action :verify_policy_scoped, only: :index
 
   before_action :authenticate_customer!
