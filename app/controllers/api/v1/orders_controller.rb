@@ -17,7 +17,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
       response = { message: 'Order created successfully' }
       render json: response, status: :created
     else
-      #render_error
+      render_error
     end
   end
 
