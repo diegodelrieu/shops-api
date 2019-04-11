@@ -14,7 +14,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
   def create
     @order =  Order.new(order_params)
     if @order.save
-      response = { message: 'Order created successfully' }
+      response = { message: 'Order created successfully', order_id: @order.id }
       render json: response, status: :created
     else
       render_error
