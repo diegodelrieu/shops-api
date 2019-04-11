@@ -1,6 +1,6 @@
 class Api::V1::OrdersController < Api::V1::BaseController
   respond_to :json
-  skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new]
+  skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new, :update]
   skip_after_action :verify_authorized
 
   def index
