@@ -6,4 +6,5 @@ class Shop < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :items
   has_many :orders, through: :items
+  acts_as_taggable_on :tags
 end
