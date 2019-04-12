@@ -19,9 +19,9 @@ Shop.create!(rating_from_diaping: number.sample, latitude: "22.538401663890813",
 
 
 Shop.all.each do |shop|
-  Item.create!(shop: shop, description: "#{Faker::Food.ingredient}, #{Faker::Food.fruits}, #{Faker::Food.vegetables}", name: "#{Faker::Food.dish}", image_url: "https://source.unsplash.com/400x400/?dessert", original_price: number.sample * 3, discount_price: :original_price * 0.75)
-  Item.create!(shop: shop, description: "#{Faker::Food.ingredient}, #{Faker::Food.fruits}, #{Faker::Food.vegetables}", name: "#{Faker::Food.dish}", image_url: "https://source.unsplash.com/400x400/?bread", original_price: number.sample * 3, discount_price: :original_price * 0.75)
-  Item.create!(shop: shop, description: "#{Faker::Food.ingredient}, #{Faker::Food.fruits}, #{Faker::Food.vegetables}", name: "#{Faker::Food.dish}", image_url: "https://source.unsplash.com/400x400/?drink", original_price: number.sample * 3, discount_price: :original_price * 0.75)
+  Item.create!(shop: shop, description: "#{Faker::Food.ingredient}, #{Faker::Food.fruits}, #{Faker::Food.vegetables}", name: "#{Faker::Food.dish}", image_url: "https://source.unsplash.com/400x400/?dessert", original_price: number.sample * 3, discount_price: number.sample * 1.5)
+  Item.create!(shop: shop, description: "#{Faker::Food.ingredient}, #{Faker::Food.fruits}, #{Faker::Food.vegetables}", name: "#{Faker::Food.dish}", image_url: "https://source.unsplash.com/400x400/?bread", original_price: number.sample * 3, discount_price: number.sample * 1.5)
+  Item.create!(shop: shop, description: "#{Faker::Food.ingredient}, #{Faker::Food.fruits}, #{Faker::Food.vegetables}", name: "#{Faker::Food.dish}", image_url: "https://source.unsplash.com/400x400/?drink", original_price: number.sample * 3, discount_price: number.sample * 1.5)
 end
 
 Customer.create!(name: 'Bob', wechat_id:'bbb', email:'bob@gmail.com', password:'secret')
