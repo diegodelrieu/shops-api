@@ -19,6 +19,8 @@ class Api::V1::ShopsController < Api::V1::BaseController
 
   def create
     @shop = Shop.new(shop_params)
+    @shop.email = "#{Devise.friendly_token}@haoshihui.com"
+    @shop.password = Devise.friendly_token
     if @shop.save
       response = { message: 'Shop created successfully', auth_token: @shop.authentication_token }
       render json: response, status: :created
