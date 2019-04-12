@@ -42,7 +42,7 @@ class Api::V1::ShopsController < Api::V1::BaseController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :description, :address, :avatar_url, :opening_hours, :rating_from_diaping,:email, :password)
+    params.require(:shop).permit(:name, :description, :address, :avatar_url, :opening_hours, :rating_from_diaping,:email, :password, :phone_number, tag_list: [])
   end
 
   def render_error
