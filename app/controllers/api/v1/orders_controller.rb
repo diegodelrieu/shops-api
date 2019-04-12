@@ -1,6 +1,7 @@
 class Api::V1::OrdersController < Api::V1::BaseController
   respond_to :json
-  skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new]
+  skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new, :update]
+  acts_as_token_authentication_handler_for Customer, only: [ :create ]
   skip_after_action :verify_authorized
 
   def index
@@ -14,7 +15,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
   def create
     @order =  Order.new(order_params)
     if @order.save
-      response = { message: 'Order created successfully' }
+      response = { message: 'Order created successfully', order_id: @order.id }
       render json: response, status: :created
     else
       render_error
