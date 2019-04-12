@@ -28,7 +28,7 @@ class Api::V1::CustomersController < Api::V1::BaseController
   end
 
   def customer_params
-    params.require(:customer).permit(:email, :password, :name, :wechat_id)
+    params.require(:customer).permit(:email, :password, :name, :wechat_id, :address)
   end
 
   def render_error
