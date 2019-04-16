@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :shops, only: [:index, :show, :new, :create]
       resources :customers, only: [:index, :show, :new, :create]
       resources :orders, only: [:index, :show, :new, :create]
+      resources :messages, only: [:index, :create]
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
