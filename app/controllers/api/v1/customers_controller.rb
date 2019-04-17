@@ -5,6 +5,9 @@ class Api::V1::CustomersController < Api::V1::BaseController
   skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new]
   skip_after_action :verify_authorized
 
+  def index
+    @customers = Customer.all
+  end
 
   def create
     @customer = Customer.new(customer_params)
