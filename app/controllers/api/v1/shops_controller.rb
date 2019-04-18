@@ -3,7 +3,7 @@ class Api::V1::ShopsController < Api::V1::BaseController
   respond_to :json
   #acts_as_token_authentication_handler_for Customer, only: [ :show ]
   before_action :set_shop, only: [:show]
-  skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new]
+  #skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new]
   skip_after_action :verify_authorized
 
   def index

@@ -1,6 +1,6 @@
 class Api::V1::MessagesController < Api::V1::BaseController
   respond_to :json
-  skip_before_action :authenticate_customer!, only: [:index, :create]
+  #skip_before_action :authenticate_customer!, only: [:index, :create]
   skip_after_action :verify_authorized
 
   def index
