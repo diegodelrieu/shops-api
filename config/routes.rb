@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :shops
   devise_for :customers
   root to: 'pages#home'
+  post '/login', to: 'login#login'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :sessions, only: [:create]
