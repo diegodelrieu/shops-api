@@ -18,6 +18,6 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:timestamp, :description)
+    params.require(:event).permit(:timestamp, :description, :page, :customer_id, :shop_id, :item_id)
   end
 end

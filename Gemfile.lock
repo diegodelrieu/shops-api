@@ -137,6 +137,7 @@ GEM
     pundit (2.0.1)
       activesupport (>= 3.0.0)
     rack (2.0.7)
+    rack-cors (1.0.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -257,6 +258,7 @@ DEPENDENCIES
   pry-rails
   puma
   pundit
+  rack-cors
   rails (= 5.2.3)
   redis
   rest-client
