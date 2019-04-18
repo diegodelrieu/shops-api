@@ -1,5 +1,5 @@
 class Api::V1::SessionsController < Api::V1::BaseController
-  skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new]
+  #skip_before_action :authenticate_customer!, only: [:index, :show, :create, :new]
   def create
     if params[:customer]
       sign_in_as(:customer)
