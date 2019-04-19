@@ -18,11 +18,12 @@ class LoginController < ApplicationController
   end
 
   def login
-  puts "login #{params}"
+  puts "login #{wechat_user}"
   @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
   puts @user.inspect
   render json: {
-    userId: @user.id
+    user_id: @user.id,
+    open_id: @user.open_id
   }
   end
 
