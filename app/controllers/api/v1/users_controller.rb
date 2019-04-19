@@ -11,7 +11,8 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def update
     if @user.update(user_params)
-      render :show
+      response = { message: 'User updated successfully' }
+      render json: response
     else
       render_error
     end
@@ -25,7 +26,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:userId, :openId, :nickName, :gender, :language, :city, :province, :country, :avatarUrl)
+    params.require(:user).permit(:id, :open_id, :nickName, :gender, :language, :city, :province, :country, :avatarUrl)
   end
 
   def render_error
