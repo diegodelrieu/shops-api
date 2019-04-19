@@ -14,7 +14,8 @@ class Api::V1::UsersController < Api::V1::BaseController
       response = { message: 'User updated successfully' }
       render json: response
     else
-      render_error
+      response = { message: 'Cannot update User' }
+      render json: response
     end
   end
 
